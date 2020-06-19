@@ -1,0 +1,83 @@
+name: Pokedex-SwiftUI
+options:
+  deploymentTarget:
+    iOS: 13.0
+  carthageExecutablePath: mint run Carthage/Carthage carthage
+fileGroups:
+targets:
+  Pokedex-SwiftUI:
+    type: application
+    platform: iOS
+    sources: [Pokedex-SwiftUI]
+    settings:
+      PRODUCT_NAME: Pokedex(SwiftUI)
+      CURRENT_PROJECT_VERSION: 1
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex-swiftui
+      CODE_SIGN_STYLE: Automatic
+    dependencies:
+    - target: DataStore
+    - target: Domain
+    - target: Presentation
+    - target: QuizTodayExtension
+      codeSign: false
+      embed: true
+    postbuildScripts:
+          - script: |
+              if which mint >/dev/null; then
+                mint run swiftlint swiftlint autocorrect --format
+                mint run swiftlint swiftlint
+              else
+                echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
+              fi
+            name: Run SwiftLint
+  DataStore:
+    type: framework
+    platform: iOS
+    sources: [DataStore]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.DataStore
+      CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - carthage: Alamofire
+      - carthage: Nuke
+  Presentation:
+    type: framework
+    platform: iOS
+    sources: [Presentation]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Presentation
+      CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - target: Domain
+      - carthage: Nuke
+  Domain:
+    type: framework
+    platform: iOS
+    sources: [Domain]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Domain
+      CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - target: DataStore
+  QuizTodayExtension:
+    type: app-extension
+    platform: iOS
+    sources: [QuizTodayExtension]
+    settings:
+      PRODUCT_NAME: Who is That Pokémon?
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex-swiftui.QuizTodayExtension
+      CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - target: Domain
+      - carthage: Nuke
+      - sdk: NotificationCenter.framework
+  PokedexTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - PokedexTests
+    settings:
+      base:
+        INFOPLIST_FILE: PokedexTests/Info.plist
+    dependencies:
+      - target: Pokedex-SwiftUI
