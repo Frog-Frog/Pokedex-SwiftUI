@@ -8,37 +8,42 @@
 import Domain
 import SwiftUI
 
-protocol PokemonListViewInterface {
-    mutating func showPokemonListModel(_ model: PokemonListModel)
-}
-
 struct PokemonListView: View {
-    
-    private var pokemons = [PokemonListModel.Pokemon]()
-    
+
+    @ObservedObject var viewModel: PokemonListViewModel
+
     var body: some View {
-        List(self.pokemons) { pokemon in
-            Text(pokemon.name)
+        ZStack(alignment: .top) {
+            NavigationView {
+                List(self.viewModel.pokemons) { pokemon in
+                    HStack(alignment: .center, spacing: 24) {
+                        LoadableImage(
+                            url: pokemon.imageUrl,
+                            placeholder: MonsterballImage(CGSize(width: 48, height: 48))
+                        )
+                            .frame(width: 48, height: 48, alignment: .center)
+                        Text(pokemon.name)
+                    }
+                }
+                .navigationBarTitle(Text(""), displayMode: .inline)
+            }
+            VStack {
+                Image(uiImage: Asset.logo.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 44, alignment: .center)
+            }
+        }.onAppear {
+            self.viewModel.onAppear()
         }
     }
 }
 
-extension PokemonListView: PokemonListViewInterface {
-    
-    mutating func showPokemonListModel(_ model: PokemonListModel) {
-        self.pokemons = model.pokemons
-    }
-}
-
+#if DEBUG
 struct PokemonListView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonListView()
-    }
-}
 
-extension PokemonListModel.Pokemon: Identifiable {
-    
-    public var id: Int {
-        return self.number
+    static var previews: some View {
+        return PokemonListBuilder.build()
     }
 }
+#endif
