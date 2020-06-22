@@ -1022,10 +1022,10 @@ class ServerTrustPolicyPinCertificatesTestCase: ServerTrustPolicyTestCase {
         let serverTrust = TestTrusts.leafExpired.trust
 
         let certificates = [TestCertificates.leafMultipleDNSNames, // not in certificate chain
-            TestCertificates.leafSignedByCA1, // not in certificate chain
-            TestCertificates.leafExpired, // in certificate chain 👍🏼👍🏼
-            TestCertificates.leafWildcard, // not in certificate chain
-            TestCertificates.leafDNSNameAndURI // not in certificate chain
+                            TestCertificates.leafSignedByCA1, // not in certificate chain
+                            TestCertificates.leafExpired, // in certificate chain 👍🏼👍🏼
+                            TestCertificates.leafWildcard, // not in certificate chain
+                            TestCertificates.leafDNSNameAndURI // not in certificate chain
         ]
 
         let serverTrustPolicy = PinnedCertificatesTrustEvaluator(certificates: certificates,

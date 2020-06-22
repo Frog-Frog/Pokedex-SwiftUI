@@ -202,8 +202,8 @@ class MultipartFormDataEncodingTestCase: BaseTestCase {
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: unicornImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -241,15 +241,15 @@ class MultipartFormDataEncodingTestCase: BaseTestCase {
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: unicornImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"rainbow\"; filename=\"rainbow.jpg\"\(crlf)" +
-                "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: rainbowImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -291,8 +291,8 @@ class MultipartFormDataEncodingTestCase: BaseTestCase {
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: unicornImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -343,15 +343,15 @@ class MultipartFormDataEncodingTestCase: BaseTestCase {
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: unicornImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"rainbow\"; filename=\"rainbow.jpg\"\(crlf)" +
-                "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: rainbowImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -399,21 +399,21 @@ class MultipartFormDataEncodingTestCase: BaseTestCase {
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedData.append(Data(
                 "Content-Disposition: form-data; name=\"lorem\"\(crlf)\(crlf)".utf8
-                )
+            )
             )
             expectedData.append(loremData)
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: unicornImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedData.append(Data((
                 "Content-Disposition: form-data; name=\"rainbow\"; filename=\"rainbow.jpg\"\(crlf)" +
-                "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
+            )
             )
             expectedData.append(try! Data(contentsOf: rainbowImageURL))
             expectedData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -540,8 +540,8 @@ class MultipartFormDataWriteEncodedDataToDiskTestCase: BaseTestCase {
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: unicornImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -582,15 +582,15 @@ class MultipartFormDataWriteEncodedDataToDiskTestCase: BaseTestCase {
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: unicornImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"rainbow\"; filename=\"rainbow.jpg\"\(crlf)" +
-                "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: rainbowImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -635,8 +635,8 @@ class MultipartFormDataWriteEncodedDataToDiskTestCase: BaseTestCase {
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: unicornImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -690,15 +690,15 @@ class MultipartFormDataWriteEncodedDataToDiskTestCase: BaseTestCase {
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: unicornImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"rainbow\"; filename=\"rainbow.jpg\"\(crlf)" +
-                "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: rainbowImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))
@@ -749,21 +749,21 @@ class MultipartFormDataWriteEncodedDataToDiskTestCase: BaseTestCase {
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .initial, boundaryKey: boundary))
             expectedFileData.append(Data(
                 "Content-Disposition: form-data; name=\"lorem\"\(crlf)\(crlf)".utf8
-                )
+            )
             )
             expectedFileData.append(loremData)
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"unicorn\"; filename=\"unicorn.png\"\(crlf)" +
-                "Content-Type: image/png\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/png\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: unicornImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .encapsulated, boundaryKey: boundary))
             expectedFileData.append(Data((
                 "Content-Disposition: form-data; name=\"rainbow\"; filename=\"rainbow.jpg\"\(crlf)" +
-                "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
-                )
+                    "Content-Type: image/jpeg\(crlf)\(crlf)").utf8
+            )
             )
             expectedFileData.append(try! Data(contentsOf: rainbowImageURL))
             expectedFileData.append(BoundaryGenerator.boundaryData(boundaryType: .final, boundaryKey: boundary))

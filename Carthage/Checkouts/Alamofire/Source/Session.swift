@@ -403,7 +403,7 @@ open class Session {
                             requestModifier: RequestModifier? = nil) -> DataStreamRequest {
         let convertible = RequestEncodableConvertible(url: convertible,
                                                       method: method,
-                                                      parameters: Empty?.none,
+                                                      parameters: Optional<Empty>.none,
                                                       encoder: URLEncodedFormParameterEncoder.default,
                                                       headers: headers,
                                                       requestModifier: requestModifier)

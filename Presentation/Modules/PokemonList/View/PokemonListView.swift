@@ -8,23 +8,19 @@
 import Domain
 import SwiftUI
 
-struct PokemonListView: View {
+struct PokemonListView<ViewModel: PokemonListViewModel>: View {
 
-    @ObservedObject var viewModel: PokemonListViewModel
+    @ObservedObject var viewModel: ViewModel
 
     var body: some View {
         ZStack(alignment: .top) {
             NavigationView {
                 List(self.viewModel.pokemons) { pokemon in
-                    HStack(alignment: .center, spacing: 24) {
-                        LoadableImage(
-                            url: pokemon.imageUrl,
-                            placeholder: MonsterballImage(CGSize(width: 48, height: 48))
-                        )
-                            .frame(width: 48, height: 48, alignment: .center)
-                        Text(pokemon.name)
-                    }
+                    PokemonListItemView(pokemon: pokemon)
+                        .listRowInsets(EdgeInsets())
+                        .listStyle(PlainListStyle())
                 }
+                .background(Color(Asset.background.color))
                 .navigationBarTitle(Text(""), displayMode: .inline)
             }
             VStack {

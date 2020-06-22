@@ -176,16 +176,16 @@ public struct ImageRequest: CustomStringConvertible {
     public var description: String {
         return """
         ImageRequest {
-        resource: \(ref.resource)
-        priority: \(ref.priority)
-        processors: \(ref.processors)
-        options: {
-        memoryCacheOptions: \(ref.options.memoryCacheOptions)
-        filteredURL: \(String(describing: ref.options.filteredURL))
-        cacheKey: \(String(describing: ref.options.cacheKey))
-        loadKey: \(String(describing: ref.options.loadKey))
-        userInfo: \(String(describing: ref.options.userInfo))
-        }
+            resource: \(ref.resource)
+            priority: \(ref.priority)
+            processors: \(ref.processors)
+            options: {
+                memoryCacheOptions: \(ref.options.memoryCacheOptions)
+                filteredURL: \(String(describing: ref.options.filteredURL))
+                cacheKey: \(String(describing: ref.options.cacheKey))
+                loadKey: \(String(describing: ref.options.loadKey))
+                userInfo: \(String(describing: ref.options.userInfo))
+            }
         }
         """
     }

@@ -92,6 +92,7 @@ extension XCTestCase {
     }
 }
 
+
 // MARK: - UIImage
 
 func XCTAssertEqualImages(_ lhs: PlatformImage, _ rhs: PlatformImage, file: StaticString = #file, line: UInt = #line) {
@@ -102,6 +103,7 @@ private func isEqual(_ lhs: PlatformImage, _ rhs: PlatformImage) -> Bool {
     guard lhs.sizeInPixels == rhs.sizeInPixels else {
         return false
     }
+
 
     // Note: this will probably need more work.
     let encoder = ImageEncoders.ImageIO(type: .png, compressionRatio: 1)

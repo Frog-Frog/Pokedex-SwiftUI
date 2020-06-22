@@ -82,12 +82,12 @@ extension Request {
                                            response: HTTPURLResponse)
         -> ValidationResult
         where S.Iterator.Element == Int {
-            if acceptableStatusCodes.contains(response.statusCode) {
-                return .success(Void())
-            } else {
-                let reason: ErrorReason = .unacceptableStatusCode(code: response.statusCode)
-                return .failure(AFError.responseValidationFailed(reason: reason))
-            }
+        if acceptableStatusCodes.contains(response.statusCode) {
+            return .success(Void())
+        } else {
+            let reason: ErrorReason = .unacceptableStatusCode(code: response.statusCode)
+            return .failure(AFError.responseValidationFailed(reason: reason))
+        }
     }
 
     // MARK: Content Type
@@ -97,47 +97,47 @@ extension Request {
                                            data: Data?)
         -> ValidationResult
         where S.Iterator.Element == String {
-            guard let data = data, !data.isEmpty else { return .success(Void()) }
+        guard let data = data, !data.isEmpty else { return .success(Void()) }
 
-            return validate(contentType: acceptableContentTypes, response: response)
+        return validate(contentType: acceptableContentTypes, response: response)
     }
 
     fileprivate func validate<S: Sequence>(contentType acceptableContentTypes: S,
                                            response: HTTPURLResponse)
         -> ValidationResult
         where S.Iterator.Element == String {
-            guard
-                let responseContentType = response.mimeType,
-                let responseMIMEType = MIMEType(responseContentType)
-                else {
-                    for contentType in acceptableContentTypes {
-                        if let mimeType = MIMEType(contentType), mimeType.isWildcard {
-                            return .success(Void())
-                        }
-                    }
-
-                    let error: AFError = {
-                        let reason: ErrorReason = .missingContentType(acceptableContentTypes: Array(acceptableContentTypes))
-                        return AFError.responseValidationFailed(reason: reason)
-                    }()
-
-                    return .failure(error)
-            }
-
+        guard
+            let responseContentType = response.mimeType,
+            let responseMIMEType = MIMEType(responseContentType)
+        else {
             for contentType in acceptableContentTypes {
-                if let acceptableMIMEType = MIMEType(contentType), acceptableMIMEType.matches(responseMIMEType) {
+                if let mimeType = MIMEType(contentType), mimeType.isWildcard {
                     return .success(Void())
                 }
             }
 
             let error: AFError = {
-                let reason: ErrorReason = .unacceptableContentType(acceptableContentTypes: Array(acceptableContentTypes),
-                                                                   responseContentType: responseContentType)
-
+                let reason: ErrorReason = .missingContentType(acceptableContentTypes: Array(acceptableContentTypes))
                 return AFError.responseValidationFailed(reason: reason)
             }()
 
             return .failure(error)
+        }
+
+        for contentType in acceptableContentTypes {
+            if let acceptableMIMEType = MIMEType(contentType), acceptableMIMEType.matches(responseMIMEType) {
+                return .success(Void())
+            }
+        }
+
+        let error: AFError = {
+            let reason: ErrorReason = .unacceptableContentType(acceptableContentTypes: Array(acceptableContentTypes),
+                                                               responseContentType: responseContentType)
+
+            return AFError.responseValidationFailed(reason: reason)
+        }()
+
+        return .failure(error)
     }
 }
 
@@ -245,8 +245,8 @@ extension DownloadRequest {
     /// A closure used to validate a request that takes a URL request, a URL response, a temporary URL and a
     /// destination URL, and returns whether the request was valid.
     public typealias Validation = (_ request: URLRequest?,
-        _ response: HTTPURLResponse,
-        _ fileURL: URL?)
+                                   _ response: HTTPURLResponse,
+                                   _ fileURL: URL?)
         -> ValidationResult
 
     /// Validates that the response has a status code in the specified sequence.

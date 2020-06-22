@@ -137,10 +137,10 @@ class CacheTestCase: BaseTestCase {
             let request = startRequest(cacheControl: cacheControl,
                                        queue: serialQueue,
                                        completion: { _, response in
-                                        let timestamp = response!.allHeaderFields["Date"] as! String
-                                        self.timestamps[cacheControl] = timestamp
+                                           let timestamp = response!.allHeaderFields["Date"] as! String
+                                           self.timestamps[cacheControl] = timestamp
 
-                                        dispatchGroup.leave()
+                                           dispatchGroup.leave()
             })
 
             requests[cacheControl] = request
@@ -181,15 +181,15 @@ class CacheTestCase: BaseTestCase {
                       queue: DispatchQueue = .main,
                       completion: @escaping (URLRequest?, HTTPURLResponse?) -> Void)
         -> URLRequest {
-            let urlRequest = self.urlRequest(cacheControl: cacheControl, cachePolicy: cachePolicy)
-            let request = manager.request(urlRequest)
+        let urlRequest = self.urlRequest(cacheControl: cacheControl, cachePolicy: cachePolicy)
+        let request = manager.request(urlRequest)
 
-            request.response(queue: queue,
-                             completionHandler: { response in
-                                completion(response.request, response.response)
-            })
+        request.response(queue: queue,
+                         completionHandler: { response in
+                             completion(response.request, response.response)
+        })
 
-            return urlRequest
+        return urlRequest
     }
 
     // MARK: - Test Execution and Verification

@@ -165,7 +165,7 @@ final class RequestModifierTests: BaseTestCase {
 
                 response = completion
                 completed.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -190,7 +190,7 @@ final class RequestModifierTests: BaseTestCase {
 
                 response = completion
                 completed.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 

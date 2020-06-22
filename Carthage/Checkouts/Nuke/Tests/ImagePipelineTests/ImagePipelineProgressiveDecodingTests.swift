@@ -54,7 +54,7 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
         // When
         pipeline.loadImage(
             with: Test.request,
-            progress: { response, _, _ in
+            progress: { response, completed, total in
                 // This works because each new chunk resulted in a new scan
                 if let container = response?.container {
                     // Then image previews are produced
@@ -69,7 +69,7 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
                     expectPartialImageProduced.fulfill()
                     self.dataLoader.resume()
                 }
-        },
+            },
             completion: { result in
                 // Then the final image is produced
                 switch result {
@@ -86,7 +86,7 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
                 XCTAssertEqual(cached?.image, result.value?.image)
 
                 expectFinalImageProduced.fulfill()
-        }
+            }
         )
 
         wait()
@@ -118,11 +118,11 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
             progress: { image, _, _ in
                 XCTAssertNil(image, "Expected partial images to never be produced") // Partial images never produced.
                 self.dataLoader.resume()
-        },
+            },
             completion: { result in
                 XCTAssertTrue(result.isSuccess, "Expected the final image to be produced")
                 finalLoaded.fulfill()
-        }
+            }
         )
 
         wait()
@@ -150,13 +150,13 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
                     XCTAssertEqual(image.cgImage?.width, 45, "Expected progressive image to be resized")
                     XCTAssertEqual(image.cgImage?.height, 30, "Expected progressive image to be resized")
                 }
-        },
+            },
             completion: { result in
                 XCTAssertTrue(result.isSuccess, "Expected the final image to be produced")
                 let image = result.value?.image
                 XCTAssertEqual(image?.cgImage?.width, 45, "Expected the final image to be resized")
                 XCTAssertEqual(image?.cgImage?.height, 30, "Expected the final image to be resized")
-        }
+            }
         )
 
         wait()
@@ -175,12 +175,12 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
                     XCTAssertEqual(image.nk_test_processorIDs.count, 1)
                     XCTAssertEqual(image.nk_test_processorIDs.first, "_image_processor")
                 }
-        },
+            },
             completion: { result in
                 let image = result.value?.image
                 XCTAssertEqual(image?.nk_test_processorIDs.count, 1)
                 XCTAssertEqual(image?.nk_test_processorIDs.first, "_image_processor")
-        }
+            }
         )
         wait()
     }
@@ -207,11 +207,11 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
                     expectPartialImageProduced.fulfill()
                     self.dataLoader.resume()
                 }
-        },
+            },
             completion: { result in
                 XCTAssertTrue(imageView.image === result.value?.image)
                 expectedFinalLoaded.fulfill()
-        }
+            }
         )
         wait()
 
@@ -244,11 +244,11 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
                     expectPartialImageProduced.fulfill()
                     self.dataLoader.resume()
                 }
-        },
+            },
             completion: { result in
                 XCTAssertTrue(imageView.image === result.value?.image)
                 expectedFinalLoaded.fulfill()
-        }
+            }
         )
         wait()
 
@@ -268,11 +268,11 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
             progress: { response, _, _ in
                 XCTAssertNil(response, "Expected partial images to never be produced")
                 self.dataLoader.resume()
-        },
+            },
             completion: { result in
                 XCTAssertTrue(result.isSuccess)
                 expectFinalImageProduced.fulfill()
-        }
+            }
         )
         wait()
     }
@@ -301,11 +301,11 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
                     // operations is going to be finished before even starting
                 }
                 self.dataLoader.resume()
-        },
+            },
             completion: { result in
                 XCTAssertTrue(result.isSuccess)
                 finalLoaded.fulfill()
-        }
+            }
         )
 
         wait()
@@ -340,12 +340,12 @@ private struct TestExpectationProgressivePipeline {
                     expectPartialImageProduced.fulfill()
                     self.dataLoader.resume()
                 }
-        },
+            },
             completion: { result in
                 completion?(result)
                 XCTAssertTrue(result.isSuccess)
                 expectFinalImageProduced.fulfill()
-        }
+            }
         )
     }
 }

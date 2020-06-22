@@ -102,7 +102,7 @@ class ImageCachePerformanceTests: XCTestCase {
 
         let urls = (0..<10_000).map { _ in return URL(string: "http://test.com/\(rnd(500))")! }
         let requests = urls.map { ImageRequest(url: $0) }
-
+        
         measure {
             for request in requests {
                 cache[request] = image
@@ -113,7 +113,7 @@ class ImageCachePerformanceTests: XCTestCase {
     func testCacheHit() {
         let cache = ImageCache()
         let image = ImageContainer(image: PlatformImage())
-
+        
         for index in 0..<200 {
             cache[ImageRequest(url: URL(string: "http://test.com/\(index)")!)] = image
         }
@@ -133,10 +133,10 @@ class ImageCachePerformanceTests: XCTestCase {
 
         print("hits: \(hits)")
     }
-
+    
     func testCacheMiss() {
         let cache = ImageCache()
-
+        
         var misses = 0
 
         let urls = (0..<10_000).map { _ in return URL(string: "http://test.com/\(rnd(200))")! }

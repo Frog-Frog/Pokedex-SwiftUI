@@ -40,9 +40,9 @@ final class Networking: ObservableObject {
                 } else {
                     return "Failed!"
                 }
-        }
-        .assign(to: \.message, on: self)
-        .store(in: &storage)
+            }
+            .assign(to: \.message, on: self)
+            .store(in: &storage)
     }
 
     func performRequest() {

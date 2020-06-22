@@ -105,7 +105,7 @@ extension DataResponse: CustomStringConvertible, CustomDebugStringConvertible {
             [Headers]:
             \(sortedHeaders)
             """
-            } ?? "nil"
+        } ?? "nil"
         let responseBody = data.map { String(decoding: $0, as: UTF8.self) } ?? "None"
         let metricsDescription = metrics.map { "\($0.taskInterval.duration)s" } ?? "None"
 
@@ -295,7 +295,7 @@ extension DownloadResponse: CustomStringConvertible, CustomDebugStringConvertibl
             [Headers]:
             \(sortedHeaders)
             """
-            } ?? "nil"
+        } ?? "nil"
         let metricsDescription = metrics.map { "\($0.taskInterval.duration)s" } ?? "None"
         let resumeDataDescription = resumeData.map { "\($0)" } ?? "None"
 

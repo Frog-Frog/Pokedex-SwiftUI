@@ -77,7 +77,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -109,7 +109,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -138,7 +138,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -176,7 +176,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -208,7 +208,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -244,7 +244,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -283,7 +283,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -322,7 +322,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -357,7 +357,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -381,7 +381,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -405,7 +405,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -435,7 +435,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -470,7 +470,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -494,7 +494,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -518,7 +518,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -546,7 +546,7 @@ final class TLSEvaluationExpiredLeafCertificateTestCase: BaseTestCase {
             .response { resp in
                 error = resp.error
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 

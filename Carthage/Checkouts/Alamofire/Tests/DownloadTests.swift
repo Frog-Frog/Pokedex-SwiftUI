@@ -90,7 +90,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -127,8 +127,8 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
-        .cancel()
+            }
+            .cancel()
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -153,11 +153,11 @@ class DownloadResponseTestCase: BaseTestCase {
         AF.download(urlString)
             .downloadProgress { progress in
                 progressValues.append(progress.fractionCompleted)
-        }
-        .response { resp in
-            response = resp
-            expectation.fulfill()
-        }
+            }
+            .response { resp in
+                response = resp
+                expectation.fulfill()
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -197,7 +197,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -234,7 +234,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -268,7 +268,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -293,7 +293,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -321,7 +321,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -351,7 +351,7 @@ class DownloadResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -622,11 +622,11 @@ final class DownloadResumeDataTestCase: BaseTestCase {
         AF.download(resumingWith: resumeData)
             .downloadProgress { progress in
                 progressValues.append(progress.fractionCompleted)
-        }
-        .responseData { resp in
-            response2 = resp
-            expectation2.fulfill()
-        }
+            }
+            .responseData { resp in
+                response2 = resp
+                expectation2.fulfill()
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 

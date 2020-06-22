@@ -191,7 +191,7 @@ class UploadDataTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -218,14 +218,14 @@ class UploadDataTestCase: BaseTestCase {
         AF.upload(data, to: urlString)
             .uploadProgress { progress in
                 uploadProgressValues.append(progress.fractionCompleted)
-        }
-        .downloadProgress { progress in
-            downloadProgressValues.append(progress.fractionCompleted)
-        }
-        .response { resp in
-            response = resp
-            expectation.fulfill()
-        }
+            }
+            .downloadProgress { progress in
+                downloadProgressValues.append(progress.fractionCompleted)
+            }
+            .response { resp in
+                response = resp
+                expectation.fulfill()
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -287,7 +287,7 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -358,7 +358,7 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -395,7 +395,7 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -427,7 +427,7 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -463,8 +463,8 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
         },
                                 to: urlString,
                                 usingThreshold: 0).response { resp in
-                                    response = resp
-                                    expectation.fulfill()
+            response = resp
+            expectation.fulfill()
         }
 
         waitForExpectations(timeout: timeout, handler: nil)
@@ -495,8 +495,8 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
         },
                                 to: urlString,
                                 usingThreshold: 0).response { resp in
-                                    response = resp
-                                    expectation.fulfill()
+            response = resp
+            expectation.fulfill()
         }
 
         waitForExpectations(timeout: timeout, handler: nil)
@@ -553,7 +553,7 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
                 error = defaultResponse.error
 
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -596,14 +596,14 @@ class UploadMultipartFormDataTestCase: BaseTestCase {
                   usingThreshold: streamFromDisk ? 0 : 100_000_000)
             .uploadProgress { progress in
                 uploadProgressValues.append(progress.fractionCompleted)
-        }
-        .downloadProgress { progress in
-            downloadProgressValues.append(progress.fractionCompleted)
-        }
-        .response { resp in
-            response = resp
-            expectation.fulfill()
-        }
+            }
+            .downloadProgress { progress in
+                downloadProgressValues.append(progress.fractionCompleted)
+            }
+            .response { resp in
+                response = resp
+                expectation.fulfill()
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -706,7 +706,7 @@ final class UploadRequestEventsTestCase: BaseTestCase {
         // When
         let request = session.upload(Data("PAYLOAD".utf8),
                                      with: URLRequest.makeHTTPBinRequest(path: "post", method: .post)).response { _ in
-                                        responseHandler.fulfill()
+            responseHandler.fulfill()
         }
 
         waitForExpectations(timeout: timeout, handler: nil)
@@ -751,7 +751,7 @@ final class UploadRequestEventsTestCase: BaseTestCase {
         // When
         let request = session.upload(Data("PAYLOAD".utf8),
                                      with: URLRequest.makeHTTPBinRequest(path: "delay/5", method: .post)).response { _ in
-                                        responseHandler.fulfill()
+            responseHandler.fulfill()
         }
 
         eventMonitor.requestDidResumeTask = { [unowned request] _, _ in

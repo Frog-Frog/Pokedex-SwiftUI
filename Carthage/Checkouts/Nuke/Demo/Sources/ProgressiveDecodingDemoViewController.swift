@@ -24,10 +24,10 @@ final class ProgressiveDecodingDemoViewController: UIViewController {
         super.viewDidLoad()
 
         if #available(iOS 13.0, *) {
-            view.backgroundColor = UIColor.systemBackground
-        } else {
-            view.backgroundColor = UIColor.white
-        }
+             view.backgroundColor = UIColor.systemBackground
+         } else {
+             view.backgroundColor = UIColor.white
+         }
 
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(_segmentedControlValueChanged(_:)), for: .valueChanged)
@@ -70,7 +70,7 @@ final class ProgressiveDecodingDemoViewController: UIViewController {
             into: imageView,
             progress: { _, completed, total in
                 container.updateProgress(completed: completed, total: total)
-        }
+            }
         )
     }
 

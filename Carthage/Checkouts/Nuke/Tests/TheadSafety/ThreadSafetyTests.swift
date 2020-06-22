@@ -98,11 +98,18 @@ class ThreadSafetyTests: XCTestCase {
         var ops = [() -> Void]()
 
         for _ in 0..<10 { // those ops happen more frequently
-            ops += [ { cache[_request(index: rnd(10))] = ImageContainer(image: Test.image) }, { cache[_request(index: rnd(10))] = nil }, { _ = cache[_request(index: rnd(10))] }
+            ops += [
+                { cache[_request(index: rnd(10))] = ImageContainer(image: Test.image) },
+                { cache[_request(index: rnd(10))] = nil },
+                { let _ = cache[_request(index: rnd(10))] }
             ]
         }
 
-        ops += [ { cache.costLimit = rnd_cost() }, { cache.countLimit = rnd(10) }, { cache.trim(toCost: rnd_cost()) }, { cache.removeAll() }
+        ops += [
+            { cache.costLimit = rnd_cost() },
+            { cache.countLimit = rnd(10) },
+            { cache.trim(toCost: rnd_cost()) },
+            { cache.removeAll() }
         ]
 
         #if os(iOS) || os(tvOS)
@@ -144,7 +151,7 @@ class ThreadSafetyTests: XCTestCase {
         for _ in 0..<5 {
             for idx in 0..<500 {
                 queue.addOperation {
-                    _ = cache["\(idx)"]
+                    let _ = cache["\(idx)"]
                 }
                 queue.addOperation {
                     cache["\(idx)"] = data

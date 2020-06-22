@@ -339,7 +339,7 @@ class ImagePipelineDeduplicationTests: XCTestCase {
         let request1 = ImageRequest(url: Test.url, processors: [processors.make(id: "1")])
         let request2 = ImageRequest(url: Test.url, processors: [processors.make(id: "2")])
 
-        _ = pipeline.loadImage(with: request1)
+        let _ = pipeline.loadImage(with: request1)
         let task2 = pipeline.loadImage(with: request2)
 
         dataLoader.queue.isSuspended = false
@@ -446,7 +446,7 @@ class ImagePipelineDeduplicationTests: XCTestCase {
                 progress: { _, completed, total in
                     XCTAssertTrue(Thread.isMainThread)
                     expectedProgress.received((completed, total))
-            }
+                }
             )
         }
         dataLoader.queue.isSuspended = false

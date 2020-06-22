@@ -8,7 +8,14 @@
 import Domain
 import Foundation
 
-final class PokemonListViewModel: ObservableObject {
+protocol PokemonListViewModel: ObservableObject {
+
+    var pokemons: [PokemonListModel.Pokemon] { get }
+
+    func onAppear()
+}
+
+final class PokemonListViewModelImpl: PokemonListViewModel {
 
     @Published var pokemons = [PokemonListModel.Pokemon]()
 
@@ -19,7 +26,7 @@ final class PokemonListViewModel: ObservableObject {
             switch result {
             case .success(let model):
                 self.pokemons = model.pokemons
-            case .failure(let error):
+            case .failure:
                 break
             }
         }

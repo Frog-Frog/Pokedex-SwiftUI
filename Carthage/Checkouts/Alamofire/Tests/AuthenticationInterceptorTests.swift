@@ -84,9 +84,9 @@ class AuthenticationInterceptorTestCase: BaseTestCase {
 
             let refreshResult = self.refreshResult ?? .success(
                 OAuthCredential(accessToken: "a\(refreshCount)",
-                    refreshToken: "a\(refreshCount)",
-                    userID: "u1",
-                    expiration: Date())
+                                refreshToken: "a\(refreshCount)",
+                                userID: "u1",
+                                expiration: Date())
             )
 
             // The 100 ms delay here is important to allow multiple requests to queue up while refreshing
@@ -97,11 +97,11 @@ class AuthenticationInterceptorTestCase: BaseTestCase {
                         with response: HTTPURLResponse,
                         failDueToAuthenticationError error: Error)
             -> Bool {
-                lock.lock(); defer { lock.unlock() }
+            lock.lock(); defer { lock.unlock() }
 
-                didRequestFailDueToAuthErrorCount += 1
+            didRequestFailDueToAuthErrorCount += 1
 
-                return response.statusCode == 401
+            return response.statusCode == 401
         }
 
         func isRequest(_ urlRequest: URLRequest, authenticatedWith credential: OAuthCredential) -> Bool {

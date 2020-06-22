@@ -43,14 +43,14 @@ final class StatusCodeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(statusCode: 200..<300)
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -75,14 +75,14 @@ final class StatusCodeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(statusCode: [200])
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -112,14 +112,14 @@ final class StatusCodeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(statusCode: [])
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -155,7 +155,7 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(contentType: ["application/json"])
@@ -164,7 +164,7 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -191,7 +191,7 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(contentType: ["*/*"])
@@ -200,7 +200,7 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -225,14 +225,14 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(contentType: ["application/octet-stream"])
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -263,14 +263,14 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(contentType: [])
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -301,14 +301,14 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(contentType: [])
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -338,17 +338,17 @@ final class ContentTypeValidationTestCase: BaseTestCase {
                                    interceptor: RequestInterceptor? = nil,
                                    to destination: DownloadRequest.Destination?)
                 -> DownloadRequest {
-                    let request = MockDownloadRequest(downloadable: .request(convertible),
-                                                      underlyingQueue: rootQueue,
-                                                      serializationQueue: serializationQueue,
-                                                      eventMonitor: eventMonitor,
-                                                      interceptor: interceptor,
-                                                      delegate: self,
-                                                      destination: destination ?? MockDownloadRequest.defaultDestination)
+                let request = MockDownloadRequest(downloadable: .request(convertible),
+                                                  underlyingQueue: rootQueue,
+                                                  serializationQueue: serializationQueue,
+                                                  eventMonitor: eventMonitor,
+                                                  interceptor: interceptor,
+                                                  delegate: self,
+                                                  destination: destination ?? MockDownloadRequest.defaultDestination)
 
-                    perform(request)
+                perform(request)
 
-                    return request
+                return request
             }
         }
 
@@ -399,14 +399,14 @@ final class ContentTypeValidationTestCase: BaseTestCase {
             .response { resp in
                 requestResponse = resp
                 expectation1.fulfill()
-        }
+            }
 
         manager.download(urlString, method: .delete)
             .validate(contentType: ["*/*"])
             .response { resp in
                 downloadResponse = resp
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -447,7 +447,7 @@ final class MultipleValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(statusCode: 200..<300)
@@ -455,7 +455,7 @@ final class MultipleValidationTestCase: BaseTestCase {
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -481,7 +481,7 @@ final class MultipleValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(statusCode: 400..<600)
@@ -489,7 +489,7 @@ final class MultipleValidationTestCase: BaseTestCase {
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -520,7 +520,7 @@ final class MultipleValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(contentType: ["application/octet-stream"])
@@ -528,7 +528,7 @@ final class MultipleValidationTestCase: BaseTestCase {
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -593,14 +593,14 @@ final class AutomaticValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate()
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -771,11 +771,11 @@ final class CustomValidationTestCase: BaseTestCase {
             .validate { _, _, data in
                 guard data != nil else { return .failure(ValidationError.missingData) }
                 return .success(Void())
-        }
-        .response { resp in
-            requestError = resp.error
-            expectation1.fulfill()
-        }
+            }
+            .response { resp in
+                requestError = resp.error
+                expectation1.fulfill()
+            }
 
         AF.download(urlString)
             .validate { _, _, fileURL in
@@ -787,11 +787,11 @@ final class CustomValidationTestCase: BaseTestCase {
                 } catch {
                     return .failure(ValidationError.fileReadFailed)
                 }
-        }
-        .response { resp in
-            downloadError = resp.error
-            expectation2.fulfill()
-        }
+            }
+            .response { resp in
+                downloadError = resp.error
+                expectation2.fulfill()
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -817,7 +817,7 @@ final class CustomValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate { _, _, _ in .failure(ValidationError.missingFile) }
@@ -825,7 +825,7 @@ final class CustomValidationTestCase: BaseTestCase {
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -850,14 +850,14 @@ final class CustomValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validateDataExists()
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -883,7 +883,7 @@ final class CustomValidationTestCase: BaseTestCase {
             .response { resp in
                 requestError = resp.error
                 expectation1.fulfill()
-        }
+            }
 
         AF.download(urlString)
             .validate(with: ValidationError.missingFile)
@@ -891,7 +891,7 @@ final class CustomValidationTestCase: BaseTestCase {
             .response { resp in
                 downloadError = resp.error
                 expectation2.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 

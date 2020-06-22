@@ -519,7 +519,7 @@ private final class ImageViewController {
             options: params.options.union(.transitionCrossDissolve),
             animations: {
                 imageView.nuke_display(image: image)
-        },
+            },
             completion: nil
         )
     }
@@ -549,12 +549,12 @@ private final class ImageViewController {
             animations: {
                 transitionView.alpha = 0
                 imageView.alpha = 1
-        },
+            },
             completion: { isCompleted in
                 if isCompleted {
                     transitionView.removeFromSuperview()
                 }
-        }
+            }
         )
     }
 

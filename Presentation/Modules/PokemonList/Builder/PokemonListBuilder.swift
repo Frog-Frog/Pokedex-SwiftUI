@@ -12,7 +12,7 @@ import SwiftUI
 public enum PokemonListBuilder {
 
     public static func build() -> some View {
-        let viewModel = PokemonListViewModel()
+        let viewModel = PokemonListViewModelImpl()
         viewModel.pokemonListUseCase = PokemonListUseCaseProvider.provide()
 
         let view = PokemonListView(viewModel: viewModel)

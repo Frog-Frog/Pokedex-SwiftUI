@@ -46,7 +46,7 @@ final class MenuViewController: UITableViewController {
         ])
     }
 
-    private var integrationSection: MenuSection {
+    private var integrationSection:  MenuSection {
         MenuSection(title: "Integrations", items: [
             MenuItem(
                 title: "Alamofire",
@@ -119,7 +119,7 @@ final class MenuViewController: UITableViewController {
     }
 }
 
-// MARK: - MenuItem
+// MARK - MenuItem
 
 private struct MenuItem {
     typealias Action = ((MenuItem) -> Void)

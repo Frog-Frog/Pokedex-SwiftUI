@@ -38,7 +38,7 @@ final class RequestResponseTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -63,11 +63,11 @@ final class RequestResponseTestCase: BaseTestCase {
         AF.request(urlString)
             .downloadProgress { progress in
                 progressValues.append(progress.fractionCompleted)
-        }
-        .response { resp in
-            response = resp
-            expectation.fulfill()
-        }
+            }
+            .response { resp in
+                response = resp
+                expectation.fulfill()
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -108,7 +108,7 @@ final class RequestResponseTestCase: BaseTestCase {
             .responseJSON { closureResponse in
                 response = closureResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -159,7 +159,7 @@ final class RequestResponseTestCase: BaseTestCase {
             .responseJSON { closureResponse in
                 response = closureResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -258,7 +258,7 @@ final class RequestResponseTestCase: BaseTestCase {
             .responseDecodable(of: HTTPBinResponse.self) { response in
                 receivedResponse = response
                 expect.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -277,7 +277,7 @@ final class RequestResponseTestCase: BaseTestCase {
             .responseDecodable(of: HTTPBinResponse.self) { response in
                 receivedResponse = response
                 expect.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -296,7 +296,7 @@ final class RequestResponseTestCase: BaseTestCase {
             .responseDecodable(of: HTTPBinResponse.self) { response in
                 receivedResponse = response
                 expect.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 

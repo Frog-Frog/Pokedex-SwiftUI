@@ -86,7 +86,7 @@ final class CachedResponseHandlerTestCase: BaseTestCase {
                               data: response.data,
                               userInfo: ["key": "value"],
                               storagePolicy: .allowed)
-            })
+        })
 
         let request = session.request(urlString).cacheResponse(using: cacher).response { resp in
             response = resp
@@ -150,7 +150,7 @@ final class CachedResponseHandlerTestCase: BaseTestCase {
                               data: response.data,
                               userInfo: ["key": "value"],
                               storagePolicy: .allowed)
-            })
+        })
 
         let session = self.session(using: cacher)
 

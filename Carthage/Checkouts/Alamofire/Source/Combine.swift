@@ -49,8 +49,8 @@ public struct DataResponsePublisher<Value>: Publisher {
     ///   - serializer: `ResponseSerializer` used to produce the published `DataResponse`.
     public init<Serializer: ResponseSerializer>(_ request: DataRequest, queue: DispatchQueue, serializer: Serializer)
         where Value == Serializer.SerializedObject {
-            self.request = request
-            responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
+        self.request = request
+        responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
     }
 
     /// Creates an instance which will serialize responses using the provided `DataResponseSerializerProtocol`.
@@ -63,8 +63,8 @@ public struct DataResponsePublisher<Value>: Publisher {
                                                             queue: DispatchQueue,
                                                             serializer: Serializer)
         where Value == Serializer.SerializedObject {
-            self.request = request
-            responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
+        self.request = request
+        responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
     }
 
     /// Publishes only the `Result` of the `DataResponse` value.
@@ -88,7 +88,7 @@ public struct DataResponsePublisher<Value>: Publisher {
     }
 
     private final class Inner<Downstream: Subscriber>: Subscription, Cancellable
-    where Downstream.Input == Output {
+        where Downstream.Input == Output {
         typealias Failure = Downstream.Failure
 
         @Protected
@@ -142,7 +142,7 @@ extension DataRequest {
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
     public func publishResponse<Serializer: ResponseSerializer, T>(using serializer: Serializer, on queue: DispatchQueue = .main) -> DataResponsePublisher<T>
         where Serializer.SerializedObject == T {
-            DataResponsePublisher(self, queue: queue, serializer: serializer)
+        DataResponsePublisher(self, queue: queue, serializer: serializer)
     }
 
     /// Creates a `DataResponsePublisher` for this instance and uses a `DataResponseSerializer` to serialize the
@@ -257,8 +257,8 @@ public struct DataStreamPublisher<Value>: Publisher {
     ///   - serializer: `DataStreamSerializer` used to produce the published `Stream<Value, AFError>` values.
     public init<Serializer: DataStreamSerializer>(_ request: DataStreamRequest, queue: DispatchQueue, serializer: Serializer)
         where Value == Serializer.SerializedObject {
-            self.request = request
-            streamHandler = { request.responseStream(using: serializer, on: queue, stream: $0) }
+        self.request = request
+        streamHandler = { request.responseStream(using: serializer, on: queue, stream: $0) }
     }
 
     /// Publishes only the `Result` of the `DataStreamRequest.Stream`'s `Event`s.
@@ -292,7 +292,7 @@ public struct DataStreamPublisher<Value>: Publisher {
     }
 
     private final class Inner<Downstream: Subscriber>: Subscription, Cancellable
-    where Downstream.Input == Output {
+        where Downstream.Input == Output {
         typealias Failure = Downstream.Failure
 
         @Protected
@@ -402,8 +402,8 @@ public struct DownloadResponsePublisher<Value>: Publisher {
     ///   - serializer: `ResponseSerializer` used to produce the published `DownloadResponse`.
     public init<Serializer: ResponseSerializer>(_ request: DownloadRequest, queue: DispatchQueue, serializer: Serializer)
         where Value == Serializer.SerializedObject {
-            self.request = request
-            responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
+        self.request = request
+        responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
     }
 
     /// Creates an instance which will serialize responses using the provided `DownloadResponseSerializerProtocol` value.
@@ -417,8 +417,8 @@ public struct DownloadResponsePublisher<Value>: Publisher {
                                                                 queue: DispatchQueue,
                                                                 serializer: Serializer)
         where Value == Serializer.SerializedObject {
-            self.request = request
-            responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
+        self.request = request
+        responseHandler = { request.response(queue: queue, responseSerializer: serializer, completionHandler: $0) }
     }
 
     /// Publishes only the `Result` of the `DownloadResponse` value.
@@ -442,7 +442,7 @@ public struct DownloadResponsePublisher<Value>: Publisher {
     }
 
     private final class Inner<Downstream: Subscriber>: Subscription, Cancellable
-    where Downstream.Input == Output {
+        where Downstream.Input == Output {
         typealias Failure = Downstream.Failure
 
         @Protected
@@ -486,7 +486,7 @@ extension DownloadRequest {
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
     public func publishResponse<Serializer: ResponseSerializer, T>(using serializer: Serializer, on queue: DispatchQueue = .main) -> DownloadResponsePublisher<T>
         where Serializer.SerializedObject == T {
-            DownloadResponsePublisher(self, queue: queue, serializer: serializer)
+        DownloadResponsePublisher(self, queue: queue, serializer: serializer)
     }
 
     /// Creates a `DownloadResponsePublisher` for this instance using the given `DownloadResponseSerializerProtocol` and
@@ -500,7 +500,7 @@ extension DownloadRequest {
     @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
     public func publishResponse<Serializer: DownloadResponseSerializerProtocol, T>(using serializer: Serializer, on queue: DispatchQueue = .main) -> DownloadResponsePublisher<T>
         where Serializer.SerializedObject == T {
-            DownloadResponsePublisher(self, queue: queue, serializer: serializer)
+        DownloadResponsePublisher(self, queue: queue, serializer: serializer)
     }
 
     /// Creates a `DataResponsePublisher` for this instance and uses a `DataResponseSerializer` to serialize the

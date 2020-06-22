@@ -10,7 +10,7 @@ class ImageRequestTests: XCTestCase {
 
     func testStructSemanticsArePreserved() {
         // Given
-        let url1 = URL(string: "http://test.com/1.png")!
+        let url1 =  URL(string: "http://test.com/1.png")!
         let url2 = URL(string: "http://test.com/2.png")!
         let request = ImageRequest(url: url1)
 
@@ -71,7 +71,7 @@ class ImageRequestCacheKeyTests: XCTestCase {
         let request2 = ImageRequest(url: Test.url)
         AssertHashableEqual(CacheKey(request: request1), CacheKey(request: request2))
     }
-
+    
     func testRequestsWithDefaultURLRequestAndURLAreEquivalent() {
         let request1 = ImageRequest(url: Test.url)
         let request2 = ImageRequest(urlRequest: URLRequest(url: Test.url))
@@ -89,7 +89,7 @@ class ImageRequestCacheKeyTests: XCTestCase {
         let request2 = ImageRequest(url: Test.url, processors: [MockImageProcessor(id: "1")])
         AssertHashableEqual(CacheKey(request: request1), CacheKey(request: request2))
     }
-
+    
     func testRequestsWithDifferentProcessorsAreNotEquivalent() {
         let request1 = ImageRequest(url: Test.url, processors: [MockImageProcessor(id: "1")])
         let request2 = ImageRequest(url: Test.url, processors: [MockImageProcessor(id: "2")])

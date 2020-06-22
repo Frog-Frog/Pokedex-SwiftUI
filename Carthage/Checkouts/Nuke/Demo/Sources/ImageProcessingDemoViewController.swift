@@ -57,10 +57,10 @@ final class ImageProcessingDemoViewController: UIViewController, ImagePipelineSe
 
         // Displaying images in a grid the way we want is a bit tricky on iOS so
         // we use aspect ratio is be sure it works correctly in all scenarios
-        views[0][0].aspectRatio = 3 / 2
-        views[0][1].aspectRatio = 3 / 2
-        views[1][0].aspectRatio = 3 / 2
-        views[1][1].aspectRatio = 3 / 2
+        views[0][0].aspectRatio = 3/2
+        views[0][1].aspectRatio = 3/2
+        views[1][0].aspectRatio = 3/2
+        views[1][1].aspectRatio = 3/2
         views[2][0].aspectRatio = 1
         views[2][1].aspectRatio = 1
 
@@ -85,9 +85,9 @@ final class ImageProcessingDemoViewController: UIViewController, ImagePipelineSe
             ImageProcessors.Resize(size: targetSize),
             ImageProcessors.RoundedCorners(radius: 8),
             ImageProcessors.CoreImageFilter(name: "CIColorMonochrome",
-                                            parameters: ["inputIntensity": 1,
-                                                         "inputColor": CIColor(color: .white)],
-                                            identifier: "nuke.demo.monochrome")
+                                           parameters: ["inputIntensity": 1,
+                                                        "inputColor": CIColor(color: .white)],
+                                           identifier: "nuke.demo.monochrome")
         ])
 
         loadImage(view: views[2][0], title: "Circle", processors: [
@@ -126,7 +126,7 @@ final class ImageProcessingDemoViewController: UIViewController, ImagePipelineSe
     }
 
     @objc private func buttonShowSettingsTapped() {
-        ImagePipelineSettingsViewController.show(from: self, pipeline: pipeline)
+       ImagePipelineSettingsViewController.show(from: self, pipeline: pipeline)
     }
 
     // MARK: - ImagePipelineSettingsViewControllerDelegate

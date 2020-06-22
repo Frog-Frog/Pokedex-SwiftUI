@@ -63,7 +63,7 @@ private class _MockResumableDataLoader: DataLoading {
                         "Content-Range": "bytes \(chunk.startIndex)-\(chunk.endIndex)/\(data.count)",
                         "Content-Length": "\(data.count)"
                     ]
-                    )!
+                )!
 
                 didReceiveData(chunk, response)
             }
@@ -76,6 +76,7 @@ private class _MockResumableDataLoader: DataLoading {
                 }
             }
         }
+
 
         // Check if the client already has some resumable data available.
         if let range = headers?["Range"], let validator = headers?["If-Range"] {

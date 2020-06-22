@@ -123,21 +123,21 @@ final class DataStreamTests: BaseTestCase {
                     firstResponse = completion.response
                     firstExpectation.fulfill()
                 }
-        }
-        .responseStream { stream in
-            switch stream.event {
-            case let .stream(result):
-                secondStreamOnMain = Thread.isMainThread
-                switch result {
-                case let .success(data):
-                    secondAccumulatedData.append(data)
-                }
-            case let .complete(completion):
-                secondCompleteOnMain = Thread.isMainThread
-                secondResponse = completion.response
-                secondExpectation.fulfill()
             }
-        }
+            .responseStream { stream in
+                switch stream.event {
+                case let .stream(result):
+                    secondStreamOnMain = Thread.isMainThread
+                    switch result {
+                    case let .success(data):
+                        secondAccumulatedData.append(data)
+                    }
+                case let .complete(completion):
+                    secondCompleteOnMain = Thread.isMainThread
+                    secondResponse = completion.response
+                    secondExpectation.fulfill()
+                }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -181,23 +181,23 @@ final class DataStreamTests: BaseTestCase {
                     firstResponse = completion.response
                     firstExpectation.fulfill()
                 }
-        }
-        .responseStreamDecodable(of: HTTPBinResponse.self) { stream in
-            switch stream.event {
-            case let .stream(result):
-                secondStreamOnMain = Thread.isMainThread
-                switch result {
-                case let .success(value):
-                    decodedResponse = value
-                case let .failure(error):
-                    decodingError = error
-                }
-            case let .complete(completion):
-                secondCompleteOnMain = Thread.isMainThread
-                secondResponse = completion.response
-                secondExpectation.fulfill()
             }
-        }
+            .responseStreamDecodable(of: HTTPBinResponse.self) { stream in
+                switch stream.event {
+                case let .stream(result):
+                    secondStreamOnMain = Thread.isMainThread
+                    switch result {
+                    case let .success(value):
+                        decodedResponse = value
+                    case let .failure(error):
+                        decodingError = error
+                    }
+                case let .complete(completion):
+                    secondCompleteOnMain = Thread.isMainThread
+                    secondResponse = completion.response
+                    secondExpectation.fulfill()
+                }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -226,7 +226,7 @@ final class DataStreamTests: BaseTestCase {
                     expect.fulfill()
                 default: break
                 }
-        }.asInputStream()
+            }.asInputStream()
 
         waitForExpectations(timeout: timeout)
 
@@ -256,7 +256,7 @@ final class DataStreamTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }.resume()
+            }.resume()
 
         waitForExpectations(timeout: timeout)
 
@@ -281,7 +281,7 @@ final class DataStreamTests: BaseTestCase {
                     expect.fulfill()
                 default: break
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -308,7 +308,7 @@ final class DataStreamTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -390,7 +390,7 @@ final class DataStreamSerializationTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -429,7 +429,7 @@ final class DataStreamSerializationTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -468,7 +468,7 @@ final class DataStreamSerializationTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -551,7 +551,7 @@ final class DataStreamIntegrationTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -573,7 +573,7 @@ final class DataStreamIntegrationTests: BaseTestCase {
         let redirector = Redirector(behavior: .modify { _, _, _ in
             redirected.fulfill()
             return URLRequest.makeHTTPBinRequest(path: "stream/1")
-            })
+        })
         let expect = expectation(description: "stream complete")
 
         // When
@@ -594,7 +594,7 @@ final class DataStreamIntegrationTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -617,7 +617,7 @@ final class DataStreamIntegrationTests: BaseTestCase {
         let cacher = ResponseCacher(behavior: .modify { _, _ in
             cached.fulfill()
             return nil
-            })
+        })
         let expect = expectation(description: "stream complete")
 
         // When
@@ -638,7 +638,7 @@ final class DataStreamIntegrationTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -669,7 +669,7 @@ final class DataStreamIntegrationTests: BaseTestCase {
                     response = completion.response
                     expect.fulfill()
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout)
 
@@ -740,7 +740,7 @@ final class DataStreamLifetimeEvents: BaseTestCase {
                     responseHandler.fulfill()
                 default: break
                 }
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 

@@ -117,8 +117,8 @@ extension SessionDelegate: URLSessionTaskDelegate {
 
         guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
             let trust = challenge.protectionSpace.serverTrust
-            else {
-                return (.performDefaultHandling, nil, nil)
+        else {
+            return (.performDefaultHandling, nil, nil)
         }
 
         do {

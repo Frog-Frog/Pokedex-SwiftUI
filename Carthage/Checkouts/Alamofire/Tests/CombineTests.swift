@@ -280,9 +280,9 @@ final class DataRequestCombineTests: CombineTestCase {
                 .subscribe(on: queue)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: {
-                        receivedOnMain = Thread.isMainThread
-                        response = $0
-                        responseReceived.fulfill()
+                          receivedOnMain = Thread.isMainThread
+                          response = $0
+                          responseReceived.fulfill()
                 })
         }
 
@@ -310,9 +310,9 @@ final class DataRequestCombineTests: CombineTestCase {
                     completionReceived.fulfill()
                 },
                       receiveValue: {
-                        dispatchPrecondition(condition: .onQueue(queue))
-                        response = $0
-                        responseReceived.fulfill()
+                    dispatchPrecondition(condition: .onQueue(queue))
+                    response = $0
+                    responseReceived.fulfill()
                 })
         }
 
@@ -338,9 +338,9 @@ final class DataRequestCombineTests: CombineTestCase {
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: {
-                        receivedOnMain = Thread.isMainThread
-                        response = $0
-                        responseReceived.fulfill()
+                          receivedOnMain = Thread.isMainThread
+                          response = $0
+                          responseReceived.fulfill()
                 })
         }
 
@@ -420,7 +420,7 @@ final class DataRequestCombineTests: CombineTestCase {
                     firstResponse = first
                     secondResponse = second
                     responseReceived.fulfill()
-            }
+                }
         }
 
         waitForExpectations(timeout: timeout)
@@ -447,11 +447,11 @@ final class DataRequestCombineTests: CombineTestCase {
                     let request = URLRequest.makeHTTPBinRequest(headers: ["X-Custom": response.value?.url ?? "None"])
                     return AF.request(request)
                         .publishDecodable(type: HTTPBinResponse.self)
-            }
-            .sink(receiveCompletion: { _ in completionReceived.fulfill() }) { response in
-                secondResponse = response
-                responseReceived.fulfill()
-            }
+                }
+                .sink(receiveCompletion: { _ in completionReceived.fulfill() }) { response in
+                    secondResponse = response
+                    responseReceived.fulfill()
+                }
         }
 
         waitForExpectations(timeout: timeout)
@@ -480,13 +480,13 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .publishDecodable(type: HTTPBinResponse.self)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { stream in
-                        switch stream.event {
-                        case let .stream(value):
-                            result = value
-                        case .complete:
-                            responseReceived.fulfill()
-                        }
-                })
+                          switch stream.event {
+                          case let .stream(value):
+                              result = value
+                          case .complete:
+                              responseReceived.fulfill()
+                          }
+                      })
         }
 
         waitForExpectations(timeout: timeout)
@@ -509,12 +509,12 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .publishDecodable(type: HTTPBinResponse.self)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { stream in
-                        switch stream.event {
-                        case let .stream(value):
-                            result = value
-                        case .complete:
-                            responseReceived.fulfill()
-                        }
+                          switch stream.event {
+                          case let .stream(value):
+                              result = value
+                          case .complete:
+                              responseReceived.fulfill()
+                          }
                 })
         }
 
@@ -537,12 +537,12 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .publishData()
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { stream in
-                        switch stream.event {
-                        case let .stream(value):
-                            result = value
-                        case .complete:
-                            responseReceived.fulfill()
-                        }
+                          switch stream.event {
+                          case let .stream(value):
+                              result = value
+                          case .complete:
+                              responseReceived.fulfill()
+                          }
                 })
         }
 
@@ -565,12 +565,12 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .publishString()
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { stream in
-                        switch stream.event {
-                        case let .stream(value):
-                            result = value
-                        case .complete:
-                            responseReceived.fulfill()
-                        }
+                          switch stream.event {
+                          case let .stream(value):
+                              result = value
+                          case .complete:
+                              responseReceived.fulfill()
+                          }
                 })
         }
 
@@ -599,17 +599,17 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                     case .complete:
                         handlerResponseReceived.fulfill()
                     }
-            }
-            .publishDecodable(type: HTTPBinResponse.self)
-            .sink(receiveCompletion: { _ in completionReceived.fulfill() },
-                  receiveValue: { stream in
-                    switch stream.event {
-                    case let .stream(value):
-                        publishedResult = value
-                    case .complete:
-                        publishedResponseReceived.fulfill()
-                    }
-            })
+                }
+                .publishDecodable(type: HTTPBinResponse.self)
+                .sink(receiveCompletion: { _ in completionReceived.fulfill() },
+                      receiveValue: { stream in
+                          switch stream.event {
+                          case let .stream(value):
+                              publishedResult = value
+                          case .complete:
+                              publishedResponseReceived.fulfill()
+                          }
+                })
         }
 
         waitForExpectations(timeout: timeout)
@@ -633,9 +633,9 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .result()
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { received in
-                        result = received
-                        responseReceived.fulfill()
-                })
+                          result = received
+                          responseReceived.fulfill()
+                 })
         }
 
         waitForExpectations(timeout: timeout)
@@ -658,8 +658,8 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .result()
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { received in
-                        result = received
-                        responseReceived.fulfill()
+                          result = received
+                          responseReceived.fulfill()
                 })
         }
 
@@ -684,8 +684,8 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .value()
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { received in
-                        response = received
-                        responseReceived.fulfill()
+                          response = received
+                          responseReceived.fulfill()
                 })
         }
 
@@ -740,13 +740,13 @@ final class DataStreamRequestCombineTests: CombineTestCase {
         store {
             publisher.sink(receiveCompletion: { _ in completionReceived.fulfill() },
                            receiveValue: { stream in
-                            switch stream.event {
-                            case let .stream(value):
-                                result = value
-                            case .complete:
-                                responseReceived.fulfill()
-                            }
-            })
+                               switch stream.event {
+                               case let .stream(value):
+                                   result = value
+                               case .complete:
+                                   responseReceived.fulfill()
+                               }
+                           })
         }
 
         let stateAfterSubscription = request.state
@@ -775,13 +775,13 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .subscribe(on: queue)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { stream in
-                        receivedOnMain = Thread.isMainThread
-                        switch stream.event {
-                        case let .stream(value):
-                            result = value
-                        case .complete:
-                            responseReceived.fulfill()
-                        }
+                          receivedOnMain = Thread.isMainThread
+                          switch stream.event {
+                          case let .stream(value):
+                              result = value
+                          case .complete:
+                              responseReceived.fulfill()
+                          }
                 })
         }
 
@@ -809,14 +809,14 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                     completionReceived.fulfill()
                 },
                       receiveValue: { stream in
-                        dispatchPrecondition(condition: .onQueue(queue))
-                        switch stream.event {
-                        case let .stream(value):
-                            result = value
-                        case .complete:
-                            responseReceived.fulfill()
-                        }
-                })
+                    dispatchPrecondition(condition: .onQueue(queue))
+                    switch stream.event {
+                    case let .stream(value):
+                        result = value
+                    case .complete:
+                        responseReceived.fulfill()
+                    }
+                    })
         }
 
         waitForExpectations(timeout: timeout)
@@ -841,13 +841,13 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { stream in
-                        receivedOnMain = Thread.isMainThread
-                        switch stream.event {
-                        case let .stream(value):
-                            result = value
-                        case .complete:
-                            responseReceived.fulfill()
-                        }
+                          receivedOnMain = Thread.isMainThread
+                          switch stream.event {
+                          case let .stream(value):
+                              result = value
+                          case .complete:
+                              responseReceived.fulfill()
+                          }
                 })
         }
 
@@ -925,10 +925,10 @@ final class DataStreamRequestCombineTests: CombineTestCase {
             Publishers.CombineLatest(first.compactMap { $0.completion }, second.compactMap { $0.completion })
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: { first, second in
-                        firstCompletion = first
-                        secondCompletion = second
-                        responseReceived.fulfill()
-                })
+                          firstCompletion = first
+                          secondCompletion = second
+                          responseReceived.fulfill()
+                      })
         }
 
         waitForExpectations(timeout: timeout)
@@ -956,10 +956,10 @@ final class DataStreamRequestCombineTests: CombineTestCase {
                     let request = URLRequest.makeHTTPBinRequest(headers: ["X-Custom": completion.response?.url?.absoluteString ?? "None"])
                     return AF.streamRequest(request)
                         .publishDecodable(type: HTTPBinResponse.self)
-            }
-            .compactMap { $0.completion }
-            .sink(receiveCompletion: { _ in completionReceived.fulfill() },
-                  receiveValue: { secondCompletion = $0; responseReceived.fulfill() })
+                }
+                .compactMap { $0.completion }
+                .sink(receiveCompletion: { _ in completionReceived.fulfill() },
+                      receiveValue: { secondCompletion = $0; responseReceived.fulfill() })
         }
 
         waitForExpectations(timeout: timeout)
@@ -1198,9 +1198,9 @@ final class DownloadRequestCombineTests: CombineTestCase {
                 .subscribe(on: queue)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: {
-                        receivedOnMain = Thread.isMainThread
-                        response = $0
-                        responseReceived.fulfill()
+                          receivedOnMain = Thread.isMainThread
+                          response = $0
+                          responseReceived.fulfill()
                 })
         }
 
@@ -1228,9 +1228,9 @@ final class DownloadRequestCombineTests: CombineTestCase {
                     completionReceived.fulfill()
                 },
                       receiveValue: {
-                        dispatchPrecondition(condition: .onQueue(queue))
-                        response = $0
-                        responseReceived.fulfill()
+                    dispatchPrecondition(condition: .onQueue(queue))
+                    response = $0
+                    responseReceived.fulfill()
                 })
         }
 
@@ -1256,9 +1256,9 @@ final class DownloadRequestCombineTests: CombineTestCase {
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { _ in completionReceived.fulfill() },
                       receiveValue: {
-                        receivedOnMain = Thread.isMainThread
-                        response = $0
-                        responseReceived.fulfill()
+                          receivedOnMain = Thread.isMainThread
+                          response = $0
+                          responseReceived.fulfill()
                 })
         }
 
@@ -1338,7 +1338,7 @@ final class DownloadRequestCombineTests: CombineTestCase {
                     firstResponse = first
                     secondResponse = second
                     responseReceived.fulfill()
-            }
+                }
         }
 
         waitForExpectations(timeout: timeout)
@@ -1365,11 +1365,11 @@ final class DownloadRequestCombineTests: CombineTestCase {
                     let request = URLRequest.makeHTTPBinRequest(headers: ["X-Custom": response.value?.url ?? "None"])
                     return AF.download(request)
                         .publishDecodable(type: HTTPBinResponse.self)
-            }
-            .sink(receiveCompletion: { _ in completionReceived.fulfill() }) { response in
-                secondResponse = response
-                responseReceived.fulfill()
-            }
+                }
+                .sink(receiveCompletion: { _ in completionReceived.fulfill() }) { response in
+                    secondResponse = response
+                    responseReceived.fulfill()
+                }
         }
 
         waitForExpectations(timeout: timeout)

@@ -360,8 +360,8 @@ final class SessionTestCase: BaseTestCase {
             .response { resp in
                 response = resp.response
                 expectation.fulfill()
-        }
-        .resume()
+            }
+            .resume()
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -387,7 +387,7 @@ final class SessionTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -416,7 +416,7 @@ final class SessionTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -445,7 +445,7 @@ final class SessionTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -830,7 +830,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -863,7 +863,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -902,7 +902,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -941,7 +941,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -973,7 +973,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -1005,7 +1005,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -1038,7 +1038,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -1074,7 +1074,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -1109,7 +1109,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -1151,7 +1151,7 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { jsonResponse in
                 response = jsonResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -1189,11 +1189,11 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { response in
                 json1Response = response
                 json1Expectation.fulfill()
-        }
-        .responseJSON { response in
-            json2Response = response
-            json2Expectation.fulfill()
-        }
+            }
+            .responseJSON { response in
+                json2Response = response
+                json2Expectation.fulfill()
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -1242,11 +1242,11 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { response in
                 json1Response = response
                 json1Expectation.fulfill()
-        }
-        .responseJSON { response in
-            json2Response = response
-            json2Expectation.fulfill()
-        }
+            }
+            .responseJSON { response in
+                json2Response = response
+                json2Expectation.fulfill()
+            }
 
         waitForExpectations(timeout: 10, handler: nil)
 
@@ -1297,11 +1297,11 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { response in
                 json1Response = response
                 json1Expectation.fulfill()
-        }
-        .responseJSON { response in
-            json2Response = response
-            json2Expectation.fulfill()
-        }
+            }
+            .responseJSON { response in
+                json2Response = response
+                json2Expectation.fulfill()
+            }
 
         waitForExpectations(timeout: 10, handler: nil)
 
@@ -1352,11 +1352,11 @@ final class SessionTestCase: BaseTestCase {
             .responseJSON { response in
                 json1Response = response
                 json1Expectation.fulfill()
-        }
-        .responseJSON { response in
-            json2Response = response
-            json2Expectation.fulfill()
-        }
+            }
+            .responseJSON { response in
+                json2Response = response
+                json2Expectation.fulfill()
+            }
 
         waitForExpectations(timeout: 10, handler: nil)
 
@@ -1730,7 +1730,7 @@ final class SessionConfigurationHeadersTestCase: BaseTestCase {
             .responseDecodable(of: HTTPBinResponse.self) { closureResponse in
                 response = closureResponse
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 

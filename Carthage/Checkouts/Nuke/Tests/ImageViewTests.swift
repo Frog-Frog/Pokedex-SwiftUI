@@ -144,7 +144,7 @@ class ImageViewTests: XCTestCase {
                 XCTAssertTrue(result.isSuccess)
                 didCallCompletion = true
                 expectation.fulfill()
-        }
+            }
         )
 
         // Expect completion to be called asynchronously
@@ -165,7 +165,7 @@ class ImageViewTests: XCTestCase {
                 XCTAssertTrue(Thread.isMainThread)
                 XCTAssertTrue(result.isSuccess)
                 didCallCompletion = true
-        }
+            }
         )
         XCTAssertTrue(didCallCompletion)
     }
@@ -181,7 +181,7 @@ class ImageViewTests: XCTestCase {
                 // Expect progress to be reported, on the main thread
                 XCTAssertTrue(Thread.isMainThread)
                 expectedProgress.received((completed, total))
-        }
+            }
         )
 
         wait()
@@ -485,13 +485,13 @@ class ImageViewLoadingOptionsTests: XCTestCase {
         // Then
         XCTAssertEqual(imageView.contentMode, .center)
     }
-
+    
     #endif
-
+    
     #if os(iOS) || os(tvOS)
-
+    
     // MARK: - Tint Colors
-
+    
     func testPlaceholderAndSuccessTintColorApplied() {
         // Given
         var options = ImageLoadingOptions()
@@ -501,17 +501,17 @@ class ImageViewLoadingOptionsTests: XCTestCase {
             placeholder: .yellow
         )
         options.placeholder = PlatformImage()
-
+        
         // When
         expectToFinishLoadingImage(with: Test.request, options: options, into: imageView)
-
+        
         // Then
         XCTAssertEqual(imageView.tintColor, .yellow)
         wait()
         XCTAssertEqual(imageView.tintColor, .blue)
         XCTAssertEqual(imageView.image?.renderingMode, .alwaysTemplate)
     }
-
+    
     func testSuccessTintColorAppliedWhenFromMemoryCache() {
         // Given
         var options = ImageLoadingOptions()
@@ -520,17 +520,17 @@ class ImageViewLoadingOptionsTests: XCTestCase {
             failure: nil,
             placeholder: nil
         )
-
+        
         mockCache[Test.request] = Test.container
-
+        
         // When
         Nuke.loadImage(with: Test.request, options: options, into: imageView)
-
+        
         // Then
         XCTAssertEqual(imageView.tintColor, .blue)
         XCTAssertEqual(imageView.image?.renderingMode, .alwaysTemplate)
     }
-
+    
     func testFailureTintColorApplied() {
         // Given
         var options = ImageLoadingOptions()
@@ -540,15 +540,15 @@ class ImageViewLoadingOptionsTests: XCTestCase {
             placeholder: nil
         )
         options.failureImage = PlatformImage()
-
+        
         dataLoader.results[Test.url] = .failure(
             NSError(domain: "t", code: 42, userInfo: nil)
         )
-
+        
         // When
         expectToFinishLoadingImage(with: Test.request, options: options, into: imageView)
         wait()
-
+        
         // Then
         XCTAssertEqual(imageView.tintColor, .red)
         XCTAssertEqual(imageView.image?.renderingMode, .alwaysTemplate)

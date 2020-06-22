@@ -105,7 +105,7 @@ public extension ImageDecoders {
             // for other formats by implementing your own decoder).
             guard ImageType(data) == .jpeg,
                 ImageProperties.JPEG(data)?.isProgressive == true else {
-                    return nil
+                return nil
             }
         }
 

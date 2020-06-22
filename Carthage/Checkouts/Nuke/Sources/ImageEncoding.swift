@@ -115,7 +115,7 @@ public extension ImageEncoders {
             }
             let isAvailable = CGImageDestinationCreateWithData(
                 NSMutableData() as CFMutableData, type.rawValue as CFString, 1, nil
-                ) != nil
+            ) != nil
             availability[type] = isAvailable
             return isAvailable
         }

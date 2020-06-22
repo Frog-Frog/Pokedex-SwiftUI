@@ -54,7 +54,7 @@ private class ImageLoader: ObservableObject {
             switch result {
             case .success(let response):
                 self.image = response.image
-            case .failure(let error):
+            case .failure:
                 break
             }
         }

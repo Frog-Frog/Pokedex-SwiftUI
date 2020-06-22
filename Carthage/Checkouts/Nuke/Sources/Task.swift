@@ -135,7 +135,7 @@ final class Task<Value, Error>: TaskSubscriptionDelegate {
                 terminate(reason: .finished)
             }
         case .progress:
-        break // Simply send the event
+            break // Simply send the event
         case .error:
             terminate(reason: .finished)
         }

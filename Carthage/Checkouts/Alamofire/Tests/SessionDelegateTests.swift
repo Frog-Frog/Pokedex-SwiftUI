@@ -52,7 +52,7 @@ class SessionDelegateTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 
@@ -80,7 +80,7 @@ class SessionDelegateTestCase: BaseTestCase {
             .response { resp in
                 response = resp
                 expectation.fulfill()
-        }
+            }
 
         waitForExpectations(timeout: timeout, handler: nil)
 

@@ -48,12 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                              collapseSecondary secondaryViewController: UIViewController,
                              onto primaryViewController: UIViewController)
         -> Bool {
-            if
-                let secondaryAsNavController = secondaryViewController as? UINavigationController,
-                let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController {
-                return topAsDetailController.request == nil
-            }
+        if
+            let secondaryAsNavController = secondaryViewController as? UINavigationController,
+            let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController {
+            return topAsDetailController.request == nil
+        }
 
-            return false
+        return false
     }
 }

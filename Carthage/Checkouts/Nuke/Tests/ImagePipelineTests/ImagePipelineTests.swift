@@ -8,10 +8,10 @@ import XCTest
 class ImagePipelineTests: XCTestCase {
     var dataLoader: MockDataLoader!
     var pipeline: ImagePipeline!
-
+    
     override func setUp() {
         super.setUp()
-
+        
         dataLoader = MockDataLoader()
         pipeline = ImagePipeline {
             $0.dataLoader = dataLoader
@@ -50,7 +50,7 @@ class ImagePipelineTests: XCTestCase {
                 // Then
                 XCTAssertTrue(Thread.isMainThread)
                 expectedProgress.received((completed, total))
-        }
+            }
         )
 
         wait()
@@ -108,7 +108,7 @@ class ImagePipelineTests: XCTestCase {
 
         // When/Then
         let expectation = self.expectation(description: "Image data Loaded")
-        pipeline.loadData(with: Test.request, queue: queue, progress: { _, _ in
+        pipeline.loadData(with: Test.request,queue: queue, progress: { _, _ in
             XCTAssertNotNil(DispatchQueue.getSpecific(key: queueKey))
         }, completion: { _ in
             XCTAssertNotNil(DispatchQueue.getSpecific(key: queueKey))

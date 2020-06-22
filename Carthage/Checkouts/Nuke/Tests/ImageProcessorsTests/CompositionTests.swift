@@ -6,7 +6,7 @@ import XCTest
 @testable import Nuke
 
 #if !os(macOS)
-import UIKit
+    import UIKit
 #endif
 
 // MARK: - ImageProcessors.Composition

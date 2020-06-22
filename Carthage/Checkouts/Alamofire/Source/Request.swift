@@ -986,7 +986,7 @@ public class DataRequest: Request {
 
     /// Protected storage for the `Data` read by the instance.
     @Protected
-    private var mutableData: Data?
+    private var mutableData: Data? = nil
 
     /// Creates a `DataRequest` using the provided parameters.
     ///
@@ -1355,7 +1355,7 @@ public class DownloadRequest: Request {
     /// and the URL response, and returns a two arguments: the file URL where the temporary file should be moved and
     /// the options defining how the file should be moved.
     public typealias Destination = (_ temporaryURL: URL,
-        _ response: HTTPURLResponse) -> (destinationURL: URL, options: Options)
+                                    _ response: HTTPURLResponse) -> (destinationURL: URL, options: Options)
 
     /// Creates a download file destination closure which uses the default file manager to move the temporary file to a
     /// file URL in the first available directory with the specified search path directory and search path domain mask.
@@ -1368,11 +1368,12 @@ public class DownloadRequest: Request {
     /// - Returns: The `Destination` closure.
     public class func suggestedDownloadDestination(for directory: FileManager.SearchPathDirectory = .documentDirectory,
                                                    in domain: FileManager.SearchPathDomainMask = .userDomainMask,
-                                                   options: Options = []) -> Destination { { temporaryURL, response in
-        let directoryURLs = FileManager.default.urls(for: directory, in: domain)
-        let url = directoryURLs.first?.appendingPathComponent(response.suggestedFilename!) ?? temporaryURL
+                                                   options: Options = []) -> Destination {
+        { temporaryURL, response in
+            let directoryURLs = FileManager.default.urls(for: directory, in: domain)
+            let url = directoryURLs.first?.appendingPathComponent(response.suggestedFilename!) ?? temporaryURL
 
-        return (url, options)
+            return (url, options)
         }
     }
 
@@ -1740,7 +1741,7 @@ public class UploadRequest: DataRequest {
             let uploadable = self.uploadable,
             case let .file(url, shouldRemove) = uploadable,
             shouldRemove
-            else { return }
+        else { return }
 
         try? fileManager.removeItem(at: url)
     }
