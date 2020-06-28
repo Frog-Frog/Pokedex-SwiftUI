@@ -17,18 +17,24 @@ struct PokemonListView<ViewModel: PokemonListViewModel>: View {
             NavigationView {
                 List(self.viewModel.pokemons) { pokemon in
                     PokemonListItemView(pokemon: pokemon)
-                        .listRowInsets(EdgeInsets())
-                        .listStyle(PlainListStyle())
                 }
                 .background(Color(Asset.background.color))
                 .navigationBarTitle(Text(""), displayMode: .inline)
+                .onAppear {
+                    UITableView.appearance().separatorStyle = .none
+                }
+                .onDisappear {
+                    UITableView.appearance().separatorStyle = .singleLine
+                }
             }
-            VStack {
-                Image(uiImage: Asset.logo.image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 300, height: 44, alignment: .center)
+            .shadow(color: Color(Asset.background.color), radius: 16, x: 0, y: 4)
+            .onAppear {
+                UINavigationBar.appearance().shadowImage = UIImage()
             }
+            Image(uiImage: Asset.logo.image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: nil, height: 44, alignment: .center)
         }.onAppear {
             self.viewModel.onAppear()
         }
