@@ -7,23 +7,15 @@
 //
 
 import Domain
-import UIKit
+import SwiftUI
 
 enum PokemonDetailBuilder {
 
-    static func build(number: Int) -> UIViewController {
-        let view = PokemonDetailViewController.instantiate()
-        let presenter = PokemonDetailPresenterImpl(number: number)
-        let wireframe = PokemonDetailWireframeImpl()
+    static func build(number: Int) -> some View {
+        let viewModel = PokemonDetailViewModelImpl(number: number)
+        viewModel.pokemonDetailUseCase = PokemonDetailUseCaseProvider.provide()
 
-        view.presenter = presenter
-
-        presenter.view = view
-        presenter.wireframe = wireframe
-        presenter.pokemonDetailUseCase = PokemonDetailUseCaseProvider.provide()
-        presenter.pokemonSpeciesUseCase = PokemonSpeciesUseCaseProvider.provide()
-
-        wireframe.viewController = view
+        let view = PokemonDetailView(viewModel: viewModel)
 
         return view
     }
