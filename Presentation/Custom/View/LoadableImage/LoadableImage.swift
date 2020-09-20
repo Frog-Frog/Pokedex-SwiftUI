@@ -21,14 +21,13 @@ struct LoadableImage<Placeholder: View>: View {
     }
 
     var body: some View {
-        self.image
-            .onAppear(perform: self.imageLoader.load)
+        self.image.onAppear(perform: self.imageLoader.load)
     }
 
     private var image: some View {
         Group {
-            if self.imageLoader.image != nil {
-                Image(uiImage: self.imageLoader.image!)
+            if let image = self.imageLoader.image {
+                Image(uiImage: image)
             } else {
                 self.placeholder?.aspectRatio(contentMode: .fit)
             }
@@ -50,13 +49,13 @@ private class ImageLoader: ObservableObject {
         guard let url = self.url else {
             return
         }
-        ImagePipeline.shared.loadImage(with: url) { result in
+        ImagePipeline.shared.loadImage(with: url, completion: { result in
             switch result {
             case .success(let response):
                 self.image = response.image
             case .failure:
                 break
             }
-        }
+        })
     }
 }

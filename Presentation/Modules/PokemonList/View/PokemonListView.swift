@@ -16,7 +16,14 @@ struct PokemonListView<ViewModel: PokemonListViewModel>: View {
         ZStack(alignment: .top) {
             NavigationView {
                 List(self.viewModel.pokemons) { pokemon in
-                    PokemonListItemView(pokemon: pokemon)
+                    ZStack {
+                        PokemonListItemView(pokemon: pokemon)
+                        NavigationLink(
+                            destination: PokemonDetailBuilder.build(number: pokemon.number),
+                            label: {
+                                EmptyView()
+                            })
+                    }
                 }
                 .background(Color(Asset.background.color))
                 .navigationBarTitle(Text(""), displayMode: .inline)

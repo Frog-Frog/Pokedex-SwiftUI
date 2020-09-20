@@ -16,7 +16,7 @@ extension UIImageView {
         guard let url = url else {
             return
         }
-        ImagePipeline.shared.loadImage(with: url) { result in
+        ImagePipeline.shared.loadImage(with: url, completion: { result in
             switch result {
             case .success(let response):
                 let image = response.image.withRenderingMode(.alwaysTemplate)
@@ -26,6 +26,6 @@ extension UIImageView {
             case .failure(let error):
                 completion?(.failure(error))
             }
-        }
+        })
     }
 }

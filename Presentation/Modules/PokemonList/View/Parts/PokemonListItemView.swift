@@ -15,9 +15,8 @@ struct PokemonListItemView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 40)
-                .padding(.leading, 16)
-                .padding(.trailing, -32.0)
-                .frame(height: 80.0)
+                .padding(.trailing, -64.0)
+                .frame(height: 80)
                 .foregroundColor(.white)
                 .shadow(color: Color(Asset.shadow.color), radius: 16, x: 0, y: 4)
             HStack(alignment: .top, spacing: 24.0) {
@@ -25,7 +24,7 @@ struct PokemonListItemView: View {
                     url: self.pokemon.imageUrl,
                     placeholder: MonsterballImage(CGSize(width: 48, height: 48))
                 )
-                    .frame(width: 48, height: 48, alignment: .center)
+                .frame(width: 48, height: 48, alignment: .center)
                 VStack(alignment: .leading, spacing: 8) {
                     Text("No.\(self.pokemon.number)")
                         .font(.system(size: 11, weight: .semibold))
