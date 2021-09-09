@@ -15,6 +15,8 @@ struct PokemonListItemView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 40)
+                .padding(.leading, 36)
+                .padding([.top, .bottom], 4)
                 .padding(.trailing, -64.0)
                 .frame(height: 80)
                 .foregroundColor(.white)
@@ -32,7 +34,7 @@ struct PokemonListItemView: View {
                         .font(.system(size: 17, weight: .bold))
                 }
             }
-            .padding(.leading, 48.0)
+            .padding(.leading, 68.0)
         }
     }
 }

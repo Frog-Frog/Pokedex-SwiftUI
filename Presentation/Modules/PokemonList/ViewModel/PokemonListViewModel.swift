@@ -7,18 +7,22 @@
 
 import Domain
 import Foundation
+import SwiftUI
 
 protocol PokemonListViewModel: ObservableObject {
 
     var pokemons: [PokemonListModel.Pokemon] { get }
 
     func onAppear()
+
+    func didSelect(_ pokemon: PokemonListModel.Pokemon)
 }
 
 final class PokemonListViewModelImpl: PokemonListViewModel {
 
     @Published var pokemons = [PokemonListModel.Pokemon]()
 
+    var wireframe: PokemonListWireframe!
     var pokemonListUseCase: PokemonListUseCase!
 
     func onAppear() {
@@ -30,5 +34,9 @@ final class PokemonListViewModelImpl: PokemonListViewModel {
                 break
             }
         }
+    }
+
+    func didSelect(_ pokemon: PokemonListModel.Pokemon) {
+        // TODO
     }
 }

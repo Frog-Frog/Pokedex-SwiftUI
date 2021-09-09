@@ -10,7 +10,7 @@ import Foundation
 
 public struct PokemonSpeciesModel {
 
-    ///進化元PokemonSpeciesのID
+    /// 進化元PokemonSpeciesのID
     public let degenerationId: Int?
 
     init(_ response: PokemonSpeciesResponse) {

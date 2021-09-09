@@ -9,6 +9,9 @@ packages:
     Nuke:
       url: https://github.com/kean/Nuke.git
       version: 9.1.2
+    SwiftUIX:
+      url: https://github.com/SwiftUIX/SwiftUIX.git
+      version: 0.0.8
 settings:
   DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC: YES #Read: https://forums.swift.org/t/adding-a-package-to-two-targets-in-one-projects-results-in-an-error/35007
 fileGroups:
@@ -58,6 +61,7 @@ targets:
     dependencies:
       - target: Domain
       - package: Nuke
+      - package: SwiftUIX
   Domain:
     type: framework
     platform: iOS

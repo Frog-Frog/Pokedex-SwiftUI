@@ -7,42 +7,30 @@
 
 import Domain
 import SwiftUI
+import SwiftUIX
 
 struct PokemonListView<ViewModel: PokemonListViewModel>: View {
 
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
-        ZStack(alignment: .top) {
-            NavigationView {
-                List(self.viewModel.pokemons) { pokemon in
-                    ZStack {
-                        PokemonListItemView(pokemon: pokemon)
-                        NavigationLink(
-                            destination: PokemonDetailBuilder.build(number: pokemon.number),
-                            label: {
-                                EmptyView()
-                            })
-                    }
+        CocoaList(self.viewModel.pokemons) { pokemon in
+            PokemonListItemView(pokemon: pokemon)
+                .onTapGesture {
+                    self.viewModel.didSelect(pokemon)
                 }
-                .background(Color(Asset.background.color))
-                .navigationBarTitle(Text(""), displayMode: .inline)
-                .onAppear {
-                    UITableView.appearance().separatorStyle = .none
-                }
-                .onDisappear {
-                    UITableView.appearance().separatorStyle = .singleLine
-                }
-            }
-            .shadow(color: Color(Asset.background.color), radius: 16, x: 0, y: 4)
-            .onAppear {
-                UINavigationBar.appearance().shadowImage = UIImage()
-            }
+        }
+        .listSeparatorStyle(.none)
+        .background(Color(Asset.background.color))
+        .edgesIgnoringSafeArea(.bottom)
+        .navigationBarTitleView(
             Image(uiImage: Asset.logo.image)
                 .resizable()
                 .scaledToFit()
-                .frame(width: nil, height: 44, alignment: .center)
-        }.onAppear {
+                .frame(width: nil, height: 44, alignment: .center),
+            displayMode: .inline
+        )
+        .onAppear {
             self.viewModel.onAppear()
         }
     }
@@ -51,8 +39,19 @@ struct PokemonListView<ViewModel: PokemonListViewModel>: View {
 #if DEBUG
 struct PokemonListView_Previews: PreviewProvider {
 
+    struct Representer: UIViewControllerRepresentable {
+
+        func makeUIViewController(context: Context) -> UIViewController {
+            return UINavigationController(rootViewController: PokemonListBuilder.build())
+        }
+
+        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+            uiViewController.viewDidLoad()
+        }
+    }
+
     static var previews: some View {
-        return PokemonListBuilder.build()
+        return Representer()
     }
 }
 #endif
