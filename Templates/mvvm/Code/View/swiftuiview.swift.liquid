@@ -1,0 +1,27 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import SwiftUI
+
+struct {{ module_info.name }}View<ViewModel: {{ module_info.name }}ViewModel>: View {
+
+    @ObservedObject var viewModel: ViewModel
+
+    var body: some View {
+    }
+}
+
+#if DEBUG
+struct {{ module_info.name }}View_Previews: PreviewProvider {
+
+    static var previews: some View {
+        {{ module_info.name }}Builder.build()
+    }
+}
+#endif
+

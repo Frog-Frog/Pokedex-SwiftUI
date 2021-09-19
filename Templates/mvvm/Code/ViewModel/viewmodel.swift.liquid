@@ -6,11 +6,11 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-protocol {{ module_info.name }}Wireframe: AnyObject {}
-
-final class {{ module_info.name }}WireframeImpl: {{ module_info.name }}Wireframe {
-
-    weak var viewController: UIViewController?
+protocol {{ module_info.name }}ViewModel: ObservableObject {
 }
+
+final class {{ module_info.name }}ViewModelImpl: {{ module_info.name }}ViewModel {
+}
+
