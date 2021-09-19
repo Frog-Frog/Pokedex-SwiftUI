@@ -2,8 +2,8 @@
 company: Tomosuke Okada
 
 ### Xcode project settings
-project_name: Pokedex
-xcodeproj_path: Pokedex.xcodeproj
+project_name: Pokedex-SwiftUI
+xcodeproj_path: Pokedex-SwiftUI.xcodeproj
 
 ### Code generation settings section
 # The main project target name
@@ -15,10 +15,6 @@ project_file_path: /Presentation/Modules
 # The Xcode group path to new modules
 project_group_path: /Presentation/Modules
 
-### Dependencies settings section
-
-cartfile_path: Cartfile
-
 ### Templates
 templates:
-- {name: mvp, local: mvp}
+- {name: mvvm, local: mvvm}

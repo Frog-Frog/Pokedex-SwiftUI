@@ -12,7 +12,7 @@ enum {{ module_info.name }}Builder {
 
     static func build() -> some View {
         let viewModel = {{ module_info.name }}ViewModelImpl()
-        let view = PokemonListView(viewModel: viewModel)
+        let view = {{ module_info.name }}View(viewModel: viewModel)
         return view
     }
 }
