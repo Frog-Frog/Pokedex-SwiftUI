@@ -1,7 +1,7 @@
 name: Pokedex-SwiftUI
 options:
   deploymentTarget:
-    iOS: 13.0
+    iOS: 15.0
 packages:
     Alamofire:
       url: https://github.com/Alamofire/Alamofire.git
@@ -68,13 +68,3 @@ targets:
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: DataStore
-  PokedexTests:
-    type: bundle.unit-test
-    platform: iOS
-    sources:
-      - PokedexTests
-    settings:
-      base:
-        INFOPLIST_FILE: PokedexTests/Info.plist
-    dependencies:
-      - target: Pokedex-SwiftUI

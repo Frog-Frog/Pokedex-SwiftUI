@@ -28,6 +28,7 @@ struct LoadableImage<Placeholder: View>: View {
         Group {
             if let image = self.imageLoader.image {
                 Image(uiImage: image)
+                    .resizable()
             } else {
                 self.placeholder?.aspectRatio(contentMode: .fit)
             }

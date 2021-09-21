@@ -14,44 +14,31 @@ struct PokemonListView<ViewModel: PokemonListViewModel>: View {
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
-        CocoaList(self.viewModel.pokemons) { pokemon in
-            PokemonListItemView(pokemon: pokemon)
-                .onTapGesture {
-                    self.viewModel.didSelect(pokemon)
+        NavigationView {
+            ScrollView {
+                LazyVStack(spacing: 4.0) {
+                    ForEach(self.viewModel.pokemons) { pokemon in
+                        NavigationLink(destination: PokemonDetailBuilder.build(number: pokemon.number)) {
+                            PokemonListRow(pokemon: pokemon)
+                        }
+                    }
                 }
-        }
-        .listSeparatorStyle(.none)
-        .background(Color(Asset.background.color))
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarTitleView(
-            Image(uiImage: Asset.logo.image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: nil, height: 44, alignment: .center),
-            displayMode: .inline
-        )
-        .onAppear {
-            self.viewModel.onAppear()
-        }
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationTitle("Pokedex")
+            .onAppear {
+                self.viewModel.onAppear()
+            }
+        }.navigationViewStyle(.stack)
     }
 }
 
 #if DEBUG
 struct PokemonListView_Previews: PreviewProvider {
 
-    struct Representer: UIViewControllerRepresentable {
-
-        func makeUIViewController(context: Context) -> UIViewController {
-            return UINavigationController(rootViewController: PokemonListBuilder.build())
-        }
-
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            uiViewController.viewDidLoad()
-        }
-    }
-
     static var previews: some View {
-        return Representer()
+        return PokemonListBuilder.build()
+            .previewDevice("iPhone 13 Pro")
     }
 }
 #endif

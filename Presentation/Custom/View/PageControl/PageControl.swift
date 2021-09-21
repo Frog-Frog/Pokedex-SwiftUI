@@ -13,9 +13,9 @@ struct PageControl: UIViewRepresentable {
 
     let numberOfPages: Int
 
-    let selectedColor: UIColor = Asset.pageControlSelected.color
+    let selectedColor: UIColor = Asset.primaryBlack.color
 
-    let normalColor: UIColor = Asset.pageControlNormal.color
+    let normalColor: UIColor = Asset.secondaryGray.color
 
     func makeUIView(context: Self.Context) -> UIPageControl {
         let pageControl = UIPageControl()

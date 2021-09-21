@@ -11,19 +11,12 @@ import SwiftUI
 
 public enum PokemonListBuilder {
 
-    public static func build() -> UIViewController {
+    public static func build() -> some View {
         let viewModel = PokemonListViewModelImpl()
-        let wireframe = PokemonListWireframeImpl()
-
         viewModel.pokemonListUseCase = PokemonListUseCaseProvider.provide()
-        viewModel.wireframe = PokemonListWireframeImpl()
 
         let view = PokemonListView(viewModel: viewModel)
 
-        let viewController = UIHostingController(rootView: view)
-
-        wireframe.viewController = viewController
-
-        return viewController
+        return view
     }
 }

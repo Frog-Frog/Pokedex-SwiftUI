@@ -51,7 +51,7 @@ extension PokemonStatus {
             }
         }
 
-        var priority: Int {
+        public var priority: Int {
             switch self {
             case .hp:
                 return 0

@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import Presentation
 
 @main
 struct PokedexApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PokemonListBuilder.build()
         }
     }
 }

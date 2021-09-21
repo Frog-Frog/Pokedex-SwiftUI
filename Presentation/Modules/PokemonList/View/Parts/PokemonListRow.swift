@@ -8,7 +8,7 @@
 import Domain
 import SwiftUI
 
-struct PokemonListItemView: View {
+struct PokemonListRow: View {
 
     let pokemon: PokemonListModel.Pokemon
 
@@ -30,8 +30,10 @@ struct PokemonListItemView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("No.\(self.pokemon.number)")
                         .font(.system(size: 11, weight: .semibold))
+                        .foregroundColor(Color(Asset.primaryBlack.color))
                     Text(self.pokemon.name)
                         .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(Color(Asset.primaryBlack.color))
                 }
             }
             .padding(.leading, 68.0)
@@ -42,16 +44,17 @@ struct PokemonListItemView: View {
 #if DEBUG
 @testable import Domain
 
-public struct PokemonListItemView_Previews: PreviewProvider {
+public struct PokemonListRow_Previews: PreviewProvider {
 
     public static var previews: some View {
         let ivysaur = PokemonListModel.Pokemon(
-            name: "ivysaur",
+            name: "Ivysaur",
             number: 2,
             imageUrl: PokemonImageURLGenerator.generateThumbnailURL(from: 2)
         )
 
-        return PokemonListItemView(pokemon: ivysaur)
+        return PokemonListRow(pokemon: ivysaur)
+            .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/375.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/80.0/*@END_MENU_TOKEN@*/))
     }
 }
 #endif
